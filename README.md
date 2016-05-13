@@ -12,7 +12,7 @@ I am a [DIY blogger](http://www.ashleygrenon.com/) and the most tedious part of 
 2. Add a text watermark  
 3. Compress the image
 
-I wanted to automate the process.  There are good solutions out there for automating the process, but it has been a few years since I last wrote a meaningful piece of Python code.  I saw this as an excellent way to dust off my Python skill and learn a bit about programatic image manipulation.
+I wanted to automate the process.  There are good solutions out there for automating the process, but it has been a few years since I last wrote a meaningful piece of Python code.  I saw this as an excellent way to dust off my Python skill and learn a bit about programmatic image manipulation.
 
 ## Command Line Options
 
