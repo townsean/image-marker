@@ -16,8 +16,10 @@ I wanted to automate the process.  There are good solutions out there for automa
 
 ## Command Line Options
 
-`-w <width>`
-`--width=<width>`
+```
+-w <width>
+--width=<width>
+```
 Resizes the width of the images to <width>
 
 `-h <height>`
