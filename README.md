@@ -20,67 +20,67 @@ I wanted to automate the process.  There are good solutions out there for automa
 -w <width>
 --width=<width>
 ```
-Resizes the width of the images to <width>
+Resizes the width of the images to `<width>`
 
 
 ```
 -h <height>
 --height=<height>
 ```
-Resizes the height of the images to <height>
+Resizes the height of the images to `<height>`
 
 
 ```
 -f <font family>
 --font-family=<font family>
 ```
-Sets the font family for the text watermark to <font family>
+Sets the font family for the text watermark to `<font family>`
 
 
 ```
 --font-style=<font style>
 ```
-Sets the font style of the text watermark to <font style>.  Valid options are: bold, italic, underline, regular.
+Sets the font style of the text watermark to `<font style>`.  Valid options are: **bold**, *italic*, underline, regular.
 
 
 ```
 --font-size=<font size>
 ```
-Sets the font size of the text watermark to <font size>
+Sets the font size of the text watermark to `<font size>`
 
 
 ```
 -o <opacity>
 --opacity=<opacity>
 ```
-Sets the opacity of the watermark to <opacity>.  This is a number between 0 and 1.
+Sets the opacity of the watermark to `<opacity>`.  This is a number between 0 and 1.
 
 
 ```
 -c <color>
 --color=<color>
 ```
-Sets the color of the text watermark.  Expects the color in hex format.  Also accepts the following presets: black, white, blue
+Sets the color of the text watermark to `<color>`.  Expects the `<color>` in hex format.  Also accepts the following presets: black, white, blue
 
 
 ```
 -t <text>
 --text=<text>
 ```
-Sets the watermark to <text>
+Sets the watermark to `<text>`
 
 
 ```
 -i <path>
 --image-overlay=<path>
 ```
-Sets an image overlay to <path>. (Watermark the image with an image instead of text)
+Sets an image overlay to `<path>`. (Watermark the image with an image instead of text)
 
 
 ```
 --overlay-size=<size>
 ```
-Sets the size of the image overlay. This is a number between 0 and 1. (What percentage of image should be covered by the image overlay?) 
+Sets the size of the image overlay to `<size>`. This is a number between 0 and 1. (What percentage of image should be covered by the image overlay?) 
 
 ## Maintainers
 
