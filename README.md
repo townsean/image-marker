@@ -60,7 +60,7 @@ Sets the opacity of the watermark to `<opacity>`.  This is a number between 0 an
 -c <color>
 --color=<color>
 ```
-Sets the color of the text watermark to `<color>`.  Expects the <color> in RGBA tuple format.  Also accepts the following presets: black, white, blue
+Sets the color of the text watermark to `<color>`.  Expects the `<color>` in RGBA tuple format.  Also accepts the following presets: black, white, blue
 
 
 ```
