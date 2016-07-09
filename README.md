@@ -2,7 +2,7 @@
 
 ## Synopsis
 
-Image Marker is a Python script gives users the ability to watermark image files in bulk.
+Image Marker is a Python script gives users the ability to watermark image files in bulk. (Work in Progress)
 
 ## Motivation
 
@@ -81,6 +81,10 @@ Sets an image overlay to `<path>`. (Watermark the image with an image instead of
 --overlay-size=<size>
 ```
 Sets the size of the image overlay to `<size>`. This is a number between 0 and 1. (What percentage of image should be covered by the image overlay?) 
+
+## Built With
+
+I used the [Tinify API](https://tinypng.com/developers/reference/python) to compress images and [Pillow](https://pillow.readthedocs.io/en/3.3.x/) for image manipulation.
 
 ## Maintainers
 

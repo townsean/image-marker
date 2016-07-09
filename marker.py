@@ -1,14 +1,15 @@
 #! python3
 
 import argparse, shutil, os, os.path, tinify
-from PIL import Image
+from datetime import datetime
+from PIL import Image, ImageDraw, ImageFont
 
-def compressImage(filename):    
+def compress_image(filename):    
     tinify.key = "YOUR_API_KEY"
     source = tinify.from_file(filename)
     source.to_file(filename)
 
-def resizeImage(filename, width, height):
+def resize_image(filename, width, height):
     image = Image.open(filename)
     imageWidth, imageHeight = image.size
 
@@ -25,8 +26,20 @@ def resizeImage(filename, width, height):
     resizedImage = image.resize((int(imageWidth), int(imageHeight)))
     resizedImage.save(filename)
 
-def watermarkImage(filename, text):
-    pass
+def watermark_image_with_text(filename, text, color):
+    image = Image.open(filename)
+    draw = ImageDraw.Draw(image)
+    
+    width, height = image.size
+    margin = 5
+    x = None
+    y = None
+    fill = (255, 255, 255, 10)
+    font = ImageFont.truetype(os.path.join('FONT_FOLDER', 'MyUnderwood.ttf'), int(height / 20))
+
+    textWidth, textHeight = draw.textsize(text, font)
+    draw.text((width - textWidth - margin, height - textHeight - margin), text, fill, font)
+    image.save(filename)
 
 def main():
     parser = argparse.ArgumentParser(description='Automates basic image manipulation.')
@@ -43,15 +56,22 @@ def main():
     parser.add_argument('--overlay-size', type=float, help="Sets the size of the image overlay to <size>. This is a number between 0 and 1. (What percentage of image should be covered by the image overlay?)")
 
     args = parser.parse_args()
+    
+    args.width = 750
+    args.text = "Handmade with Ashley"
+    args.directory = 'C:\\dev\\image-marker\\test_images'
 
-    # shutil.copytree("test_images", "copyof_test_images")
-    os.chdir("copyof_test_images")
-    args.width = 500
+    os.chdir(args.directory)
+    shutil.copytree(os.getcwd(), 'directory_backup_{1}'.format(args.directory, datetime.now().isoformat()).replace(':', '_'))
 
-    for filename in os.listdir(args.directory):
-        resizeImage(filename, args.width, args.height)
-        compressImage(filename)
+    for filename in os.listdir():
+        if filename.lower().endswith('.png') or filename.lower().endswith('.jpg'):
+            resize_image(filename, args.width, args.height)
+            
+            if args.text is not None:
+                watermark_image_with_text(filename, args.text, args.color)
 
+            # compress_image(filename)
 
 if __name__ == '__main__':
     main()
