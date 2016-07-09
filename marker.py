@@ -71,7 +71,7 @@ def main():
             if args.text is not None:
                 watermark_image_with_text(filename, args.text, args.color, args.font_family)
 
-            # A Tinify API is required to compress images
+            # A Tinify API key is required to compress images
             # compress_image(filename)
 
 if __name__ == '__main__':
