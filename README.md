@@ -40,20 +40,20 @@ Sets the font family for the text watermark to `<font family>`
 ```
 --font-style=<font style>
 ```
-Sets the font style of the text watermark to `<font style>`.  Valid options are: **bold**, *italic*, underline, regular. [Not implemented]
+Sets the font style of the text watermark to `<font style>`.  Valid options are: **bold**, *italic*, underline, regular. **[Not implemented]**
 
 
 ```
 --font-size=<font size>
 ```
-Sets the font size of the text watermark to `<font size>` [Not implemented]
+Sets the font size of the text watermark to `<font size>` **[Not implemented]**
 
 
 ```
 -o <opacity>
 --opacity=<opacity>
 ```
-Sets the opacity of the watermark to `<opacity>`.  This is a number between 0 and 1. [Not implemented]
+Sets the opacity of the watermark to `<opacity>`.  This is a number between 0 and 1. **[Not implemented]**
 
 
 ```
@@ -74,13 +74,13 @@ Sets the watermark to `<text>`
 -i <path>
 --image-overlay=<path>
 ```
-Sets an image overlay to `<path>`. (Watermark the image with an image instead of text) [Not implemented]
+Sets an image overlay to `<path>`. (Watermark the image with an image instead of text) **[Not implemented]**
 
 
 ```
 --overlay-size=<size>
 ```
-Sets the size of the image overlay to `<size>`. This is a number between 0 and 1. (What percentage of image should be covered by the image overlay?) [Not implemented]
+Sets the size of the image overlay to `<size>`. This is a number between 0 and 1. (What percentage of image should be covered by the image overlay?) **[Not implemented]**
 
 ## Built With
 
