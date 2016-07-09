@@ -54,13 +54,12 @@ def main():
     parser.add_argument('--font-style', choices=['bold', 'italic', 'underline', 'regular'], help="Sets the font style of the text watermark to <font style>. Valid options are: bold, italic, underline, regular.")
     parser.add_argument('--font-size', type=int, help="Sets the font size of the text watermark to <font size>")
     parser.add_argument('-o', '--opacity', type=float, help="Sets the opacity of the watermark to <opacity>. This is a number between 0 and 1.")
-    parser.add_argument('-c', '--color', help="Sets the color of the text watermark to <color>. Expects the <color> in RGBA tuple format.")
+    parser.add_argument('-c', '--color', type=ast.literal_eval, help="Sets the color of the text watermark to <color>. Expects the <color> in RGBA tuple format.")
     parser.add_argument('-t', '--text', help="Sets the watermark to <text>")
     parser.add_argument('-i', '--image-overlay', help="Sets an image overlay to <path>. (Watermark the image with an image instead of text)")
     parser.add_argument('--overlay-size', type=float, help="Sets the size of the image overlay to <size>. This is a number between 0 and 1. (What percentage of image should be covered by the image overlay?)")
 
     args = parser.parse_args()
-    args.color = ast.literal_eval(args.color)
 
     os.chdir(args.directory)
     shutil.copytree(os.getcwd(), 'directory_backup_{1}'.format(args.directory, datetime.now().isoformat()).replace(':', '_'))
