@@ -1,6 +1,7 @@
 #! python3
+# markery.py - Automates basic image manipulation:  resize, watermark, and compress images.
 
-import argparse, shutil, os, os.path, tinify
+import argparse, shutil, os, os.path, ast, tinify
 from datetime import datetime
 from PIL import Image, ImageDraw, ImageFont
 
@@ -26,7 +27,7 @@ def resize_image(filename, width, height):
     resizedImage = image.resize((int(imageWidth), int(imageHeight)))
     resizedImage.save(filename)
 
-def watermark_image_with_text(filename, text, color, fontFamily):
+def watermark_image_with_text(filename, text, color, fontfamily):
     image = Image.open(filename).convert('RGBA')
     imageWatermark = Image.new('RGBA', image.size, (255, 255, 255, 0))
 
@@ -34,10 +35,12 @@ def watermark_image_with_text(filename, text, color, fontFamily):
     
     width, height = image.size
     margin = 10
-    font = ImageFont.truetype(os.path.join('FONT_FOLDER', fontFamily), int(height / 20))
-
+    font = ImageFont.truetype(os.path.join('FONT_FOLDER', fontfamily), int(height / 20))
     textWidth, textHeight = draw.textsize(text, font)
-    draw.text((width - textWidth - margin, height - textHeight - margin), text, color, font)
+    x = width - textWidth - margin
+    y = height - textHeight - margin
+
+    draw.text((x, y), text, color, font)
 
     watermarkedImage = Image.alpha_composite(image, imageWatermark)
     watermarkedImage.save(filename)
@@ -51,18 +54,13 @@ def main():
     parser.add_argument('--font-style', choices=['bold', 'italic', 'underline', 'regular'], help="Sets the font style of the text watermark to <font style>. Valid options are: bold, italic, underline, regular.")
     parser.add_argument('--font-size', type=int, help="Sets the font size of the text watermark to <font size>")
     parser.add_argument('-o', '--opacity', type=float, help="Sets the opacity of the watermark to <opacity>. This is a number between 0 and 1.")
-    parser.add_argument('-c', '--color', help="Sets the color of the text watermark to <color>. Expects the <color> in RGBA tuple format. Also accepts the following presets: black, white, blue")
+    parser.add_argument('-c', '--color', help="Sets the color of the text watermark to <color>. Expects the <color> in RGBA tuple format.")
     parser.add_argument('-t', '--text', help="Sets the watermark to <text>")
     parser.add_argument('-i', '--image-overlay', help="Sets an image overlay to <path>. (Watermark the image with an image instead of text)")
     parser.add_argument('--overlay-size', type=float, help="Sets the size of the image overlay to <size>. This is a number between 0 and 1. (What percentage of image should be covered by the image overlay?)")
 
     args = parser.parse_args()
-    
-    args.width = 750
-    args.font_family = "MyUnderwood.ttf"
-    args.color = (255, 255, 255, 190)
-    args.text = "Handmade with Ashley"
-    args.directory = 'C:\\dev\\image-marker\\test_images'
+    args.color = ast.literal_eval(args.color)
 
     os.chdir(args.directory)
     shutil.copytree(os.getcwd(), 'directory_backup_{1}'.format(args.directory, datetime.now().isoformat()).replace(':', '_'))
@@ -74,6 +72,7 @@ def main():
             if args.text is not None:
                 watermark_image_with_text(filename, args.text, args.color, args.font_family)
 
+            # A Tinify API is required to compress images
             # compress_image(filename)
 
 if __name__ == '__main__':
