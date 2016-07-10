@@ -1,5 +1,5 @@
 #! python3
-# markery.py - Automates basic image manipulation:  resize, watermark, and compress images.
+# marker.py - Automates basic image manipulation:  resize, watermark, and compress images.
 
 import argparse, shutil, os, os.path, ast, tinify
 from datetime import datetime
@@ -35,7 +35,7 @@ def watermark_image_with_text(filename, text, color, fontfamily):
     
     width, height = image.size
     margin = 10
-    font = ImageFont.truetype(os.path.join('FONT_FOLDER', fontfamily), int(height / 20))
+    font = ImageFont.truetype(fontfamily, int(height / 20))
     textWidth, textHeight = draw.textsize(text, font)
     x = width - textWidth - margin
     y = height - textHeight - margin
