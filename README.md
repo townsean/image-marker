@@ -4,6 +4,8 @@
 
 Image Marker is a Python script gives users the ability to watermark image files in bulk. (Work in Progress)
 
+Companion blog post: [Watermarking Images with Python and Pillow](http://www.thecodingcouple.com/watermark-images-python-pillow-pil/)
+
 ## Motivation
 
 I am a [DIY blogger](http://www.ashleygrenon.com/) and the most tedious part of the job is editing the images.  I am constantly repeating the following steps:
