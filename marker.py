@@ -1,9 +1,23 @@
 #! python3
 # marker.py - Automates basic image manipulation:  resize, watermark, and compress images.
 
-import argparse, shutil, os, os.path, ast, tinify
+import argparse
+import shutil
+import os
+import os.path
+import ast
+
 from datetime import datetime
-from PIL import Image, ImageDraw, ImageFont
+
+try:
+    import tinify
+except ImportError:
+    exit("This script requires the tinify module.\nInstall with pip install tinify")
+
+try:
+    from PIL import Image, ImageDraw, ImageFont
+except ImportError:    
+    exit("This script requires the PIL module.\nInstall with pip install Pillow")
 
 def compress_image(filename):    
     tinify.key = "YOUR_API_KEY"
