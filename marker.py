@@ -80,7 +80,7 @@ def main():
     for filename in os.listdir():
         if filename.lower().endswith('.png') or filename.lower().endswith('.jpg'):
             resized_image = resize_image(filename, args.width, args.height)
-            resized_image.save(filename)
+            resized_image.save(filename, quality=90)
             
             if args.text is not None:
                 watermarked_image = watermark_image_with_text(filename, args.text, args.color, args.font_family)
