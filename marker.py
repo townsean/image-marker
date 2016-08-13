@@ -38,8 +38,8 @@ def resize_image(filename, width, height):
         imageWidth = width
         imageHeight = width
 
-    resizedImage = image.resize((int(imageWidth), int(imageHeight)))
-    resizedImage.save(filename)
+    return image.resize((int(imageWidth), int(imageHeight)), Image.ANTIALIAS)
+    
 
 def watermark_image_with_text(filename, text, color, fontfamily):
     image = Image.open(filename).convert('RGBA')
@@ -56,8 +56,7 @@ def watermark_image_with_text(filename, text, color, fontfamily):
 
     draw.text((x, y), text, color, font)
 
-    watermarkedImage = Image.alpha_composite(image, imageWatermark)
-    watermarkedImage.save(filename)
+    return Image.alpha_composite(image, imageWatermark)
 
 def main():
     parser = argparse.ArgumentParser(description='Automates basic image manipulation.')
@@ -80,10 +79,12 @@ def main():
 
     for filename in os.listdir():
         if filename.lower().endswith('.png') or filename.lower().endswith('.jpg'):
-            resize_image(filename, args.width, args.height)
+            resized_image = resize_image(filename, args.width, args.height)
+            resized_image.save(filename)
             
             if args.text is not None:
-                watermark_image_with_text(filename, args.text, args.color, args.font_family)
+                watermarked_image = watermark_image_with_text(filename, args.text, args.color, args.font_family)
+                watermarked_image.save(filename)
 
             # A Tinify API key is required to compress images
             # compress_image(filename)
