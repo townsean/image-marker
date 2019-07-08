@@ -20,7 +20,7 @@ except ImportError:
     exit("This script requires the PIL module.\nInstall with pip install Pillow")
 
 def compress_image(filename):    
-    tinify.key = "YOUR_API_KEY"
+    tinify.key = "YOUR API KEY"
     source = tinify.from_file(filename)
     source.to_file(filename)
 
@@ -79,6 +79,8 @@ def main():
 
     for filename in os.listdir():
         if filename.lower().endswith('.png') or filename.lower().endswith('.jpg'):
+            print("Processing {}".format(filename))
+
             resized_image = resize_image(filename, args.width, args.height)
             resized_image.save(filename, quality=90)
             
@@ -88,6 +90,8 @@ def main():
 
             # A Tinify API key is required to compress images
             # compress_image(filename)
+
+    print("Done.")
 
 if __name__ == '__main__':
     main()
