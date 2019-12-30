@@ -20,7 +20,7 @@ except ImportError:
     exit("This script requires the PIL module.\nInstall with pip install Pillow")
 
 def compress_image(filename):    
-    tinify.key = "YOUR API KEY"
+    tinify.key = "YOUR_API_KEY"
     source = tinify.from_file(filename)
     source.to_file(filename)
 
@@ -56,7 +56,7 @@ def watermark_image_with_text(filename, text, color, fontfamily):
 
     draw.text((x, y), text, color, font)
 
-    return Image.alpha_composite(image, imageWatermark)
+    return Image.alpha_composite(image, imageWatermark).convert("RGB")
 
 def main():
     parser = argparse.ArgumentParser(description='Automates basic image manipulation.')
@@ -89,7 +89,7 @@ def main():
                 watermarked_image.save(filename)
 
             # A Tinify API key is required to compress images
-            # compress_image(filename)
+            compress_image(filename)
 
     print("Done.")
 
